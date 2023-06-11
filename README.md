@@ -1,0 +1,1 @@
+# quarkus-bug-test
