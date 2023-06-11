@@ -1,0 +1,16 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        mavenLocal()
+    }
+    plugins {
+        id "io.quarkus.extension" version quarkusPluginVersion
+    }
+}
+rootProject.name = "quarkus-test-extension"
+
+include "runtime", "deployment", "merge-tools"
+
+project(":runtime").name = "quarkus-test-extension"
+project(":deployment").name = "quarkus-test-extension-deployment"
