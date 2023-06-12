@@ -1,54 +1,9 @@
-//////plugins {
-//////    id("java")
-//////}
-//////
-//////group = "org.test.mapins"
-//////version = "1.0.0-SNAPSHOT"
-//////
-//////repositories {
-//////    mavenCentral()
-//////}
-////
-////
-////plugins {
-////    id("io.quarkus.extension") version("3.1.1.Final")
-////}
-////
-////description = "Greeting extension"
-////
-////val quarkusPlatformVersion by extra{ property("quarkusPlatformVersion") as String }
-////
-////dependencies {
-////    implementation( platform("io.quarkus:quarkus-bom:${quarkusPlatformVersion}"))
-////    implementation("io.quarkus:quarkus-core:${quarkusPlatformVersion}")
-////    implementation("io.quarkus:quarkus-agroal:${quarkusPlatformVersion}")
-//////    implementation( platform("io.quarkus:quarkus-bom:${"3.1.1.Final"}"))
-//////    implementation("io.quarkus:quarkus-core:${"3.1.1.Final"}")
-//////    implementation("io.quarkus:quarkus-agroal:${"3.1.1.Final"}")
-////
-//////    testImplementation(platform("org.junit:junit-bom:5.9.1"))
-//////    testImplementation("org.junit.jupiter:junit-jupiter")
-////}
-//////
-//////tasks.test {
-//////    useJUnitPlatform()
-//////}
-////
-//plugins {
-//    id 'java'
-//    id 'io.quarkus.extension'
-//}
-//
-//
-//dependencies {
-//    implementation platform('io.quarkus:quarkus-bom:3.1.1.Final')
-//}
 plugins {
     id 'io.quarkus.extension' version "${quarkusPlatformVersion}"
 }
 
 quarkusExtension {
-    deploymentModule = 'deployment'
+    deploymentModule = 'quarkus-test-extension-deployment'
 }
 
 description = 'Greeting extension'
@@ -56,6 +11,7 @@ description = 'Greeting extension'
 dependencies {
     implementation platform("io.quarkus:quarkus-bom:${quarkusPlatformVersion}")
     implementation("io.quarkus:quarkus-core:${quarkusPlatformVersion}")
-    implementation "io.quarkus:quarkus-arc-deployment"
+    implementation "io.quarkus:quarkus-arc:${quarkusPlatformVersion}"
     implementation(project(":merge-tools"))
+    testImplementation 'io.quarkus:quarkus-test-common:3.1.0.CR1'
 }

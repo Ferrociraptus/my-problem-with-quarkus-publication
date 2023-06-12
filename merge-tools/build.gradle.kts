@@ -18,6 +18,7 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation(kotlin("test"))
+    testImplementation("io.quarkus:quarkus-test-common:3.1.0.CR1")
 }
 
 java {

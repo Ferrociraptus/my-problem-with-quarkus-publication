@@ -1,97 +1,9 @@
-//plugins {
-//    id("java-library")
-//    id("io.quarkus")
-//    id("maven-publish")
-//}
-////apply(plugin="maven")
-//
-//buildscript {
-//    repositories {
-//        mavenLocal()
-//    }
-//
-//}
-//
-//repositories {
-//    mavenCentral()
-//    mavenLocal()
-//}
-//
-//val quarkusPlatformGroupId: String by project
-//val quarkusPlatformArtifactId: String by project
-//val quarkusPlatformVersion: String by project
-//
-//dependencies {
-//    implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
-//    implementation( platform("io.quarkus:quarkus-bom:${quarkusPlatformVersion}"))
-//    implementation(project(mapOf("path" to ":merge-tools")))
-//    testImplementation("io.quarkus:quarkus-junit5")
-//}
-//
-//subprojects {
-//    repositories {
-//        mavenCentral()
-//        gradlePluginPortal()
-//        mavenLocal()
-//    }
-//
-//    apply(plugin = "java-library")
-//    apply(plugin = "maven-publish")
-//
-//    group = "org.test.mapins"
-//    version = "1.0.0-SNAPSHOT"
-//
-////    publishing {
-////        publications {
-////            create<MavenPublication>("maven") {
-////                groupId = project.group.toString()
-////                artifactId = project.name
-////                version = project.version.toString()
-////
-////                from(components["java"])
-////            }
-////        }
-////    }
-//}
-//
-//group = "org.test.mapins"
-//version = "1.0.0-SNAPSHOT"
-//
-//java {
-//    sourceCompatibility = JavaVersion.VERSION_17
-//    targetCompatibility = JavaVersion.VERSION_17
-//}
-//
-//tasks.withType<Test> {
-//    systemProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager")
-//}
-//tasks.withType<JavaCompile> {
-//    options.encoding = "UTF-8"
-//    options.compilerArgs.add("-parameters")
-//}
-//
-//publishing {
-//    publications {
-//        create<MavenPublication>("maven") {
-//            groupId = project.group.toString()
-//            artifactId = project.name
-//            version = project.version.toString()
-//
-//            from(components["java"])
-//        }
-//    }
-//}
-
 plugins {
     id "java-library"
     id "maven-publish"
+    id "io.quarkus"
 }
 
-//buildscript {
-//    repositories {
-//        mavenLocal()
-//    }
-//}
 
 subprojects {
     apply plugin: 'java-library'
@@ -109,9 +21,9 @@ subprojects {
     publishing {
         publications {
             maven(MavenPublication) {
-                groupId = project.group
+                groupId = group
                 artifactId = project.name
-                version = project.version
+                version = version
 
                 from components.java
             }

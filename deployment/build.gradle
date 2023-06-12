@@ -1,32 +1,11 @@
-//plugins {
-//    id("java")
-//}
-//
-//repositories {
-//    mavenCentral()
-//}
-
-//val quarkusPlatformGroupId: String by project
-//val quarkusPlatformArtifactId: String by project
-//val quarkusPlatformVersion: String by project
-//
-//dependencies {
-//    implementation(project(":runtime"))
-//    implementation(project(":merge-tools"))
-//    implementation("io.quarkus:quarkus-arc-deployment")
-//    testImplementation("io.quarkus:quarkus-junit5-internal")
-//}
-
-//tasks.test {
-//    useJUnitPlatform()
-//}
-
 dependencies {
     implementation project(':quarkus-test-extension')
 
-    implementation platform("io.quarkus:quarkus-bom:${quarkusPlatformVersion}")
-    implementation "io.quarkus:quarkus-arc-deployment"
-    implementation project(path: ':merge-tools')
 
-    testImplementation 'io.quarkus:quarkus-junit5-internal'
+    implementation "io.quarkus:quarkus-agroal-deployment:${quarkusPlatformVersion}"
+    implementation "io.quarkus:quarkus-core-deployment:${quarkusPlatformVersion}"
+    implementation "io.quarkus:quarkus-arc-deployment:${quarkusPlatformVersion}"
+    implementation project(':merge-tools')
+
+    testImplementation "io.quarkus:quarkus-junit5-internal:${quarkusPlatformVersion}"
 }

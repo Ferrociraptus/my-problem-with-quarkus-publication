@@ -19,7 +19,6 @@ import java.util.List;
 
 public final class MergeToolResourceProcessor {
 
-    public MergeToolResourceProcessor(){}
 
     @BuildStep
     FeatureBuildItem featureBuildItem() {
@@ -38,34 +37,7 @@ public final class MergeToolResourceProcessor {
     }
 
     @BuildStep
-    void findMergeUtilClass(CombinedIndexBuildItem index, BuildProducer<MergeUtilBuildItem> producer) {
-        producer.produce(new MergeUtilBuildItem(index.getIndex().getClassByName(ClassNames.MERGE_UTIL)));
-    }
-
-//    @BuildStep
-//    AnnotationsTransformerBuildItem annotateClassCache(MergeUtilBuildItem item) {
-//        AnnotationsTransformer transformer = new AnnotationsTransformer() {
-//            @Override
-//            public boolean appliesTo(AnnotationTarget.Kind kind) {
-//                // at some point, we might want to support METHOD_PARAMETER too, but for now getting annotations for them
-//                // is cumbersome so let's wait for Jandex improvements
-//                return kind == AnnotationTarget.Kind.CLASS;
-//            }
-//
-//            @Override
-//            public void transform(TransformationContext transformationContext) {
-//                transformationContext
-//                        .transform()
-//                        .add(DotNames.SINGLETON)
-//                        .done();
-//            }
-//        };
-//        return new AnnotationsTransformerBuildItem(transformer);
-//    }
-
-    @BuildStep
     void createMergeUtilClass(BuildProducer<AdditionalBeanBuildItem> additionalBeanProducer) {
-
         additionalBeanProducer.produce(
                 AdditionalBeanBuildItem.builder()
                         .addBeanClass(MergeUtil.class)
@@ -73,7 +45,6 @@ public final class MergeToolResourceProcessor {
                         .setDefaultScope(DotNames.SINGLETON)
                         .build()
         );
-
     }
 
     @BuildStep
@@ -84,8 +55,6 @@ public final class MergeToolResourceProcessor {
 
         final List<String> listOfCachedClasses = classes.stream().map(e -> e.get().name().toString()).toList();
 
-        MergeUtil mergeUtilObj = containerItem.getValue().beanInstance(MergeUtil.class);
-
-        recorder.cacheMergeableClasses(mergeUtilObj, listOfCachedClasses);
+        recorder.cacheMergeableClasses(containerItem.getValue(), listOfCachedClasses);
     }
 }
