@@ -9,7 +9,7 @@ pluginManagement {
         id quarkusPluginId version quarkusPluginVersion
     }
 }
-rootProject.name = "quarkus-test-extension"
+rootProject.name = "quarkus-test-extension-root"
 
 include "runtime", "deployment", "merge-tools"
 

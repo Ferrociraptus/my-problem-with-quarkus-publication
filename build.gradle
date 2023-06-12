@@ -35,19 +35,6 @@ group = "org.test.mapins"
 version = "1.0.0-SNAPSHOT"
 
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'org.test.mapins'
-            artifactId = project.name
-            version = '1.0.0-SNAPSHOT'
-
-            from components.java
-        }
-    }
-}
-
-
 
 
 
