@@ -46,3 +46,18 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 You can then execute your native executable with: `./build/code-with-quarkus-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.
+<<<<<<< HEAD
+=======
+
+## Related Guides
+
+- SmallRye GraphQL ([guide](https://quarkus.io/guides/smallrye-graphql)): Create GraphQL Endpoints using the code-first approach from MicroProfile GraphQL
+
+## Provided Code
+
+### SmallRye GraphQL
+
+Start coding with this Hello GraphQL Query
+
+[Related guide section...](https://quarkus.io/guides/smallrye-graphql)
+>>>>>>> 29080f2 (Inital commit)
